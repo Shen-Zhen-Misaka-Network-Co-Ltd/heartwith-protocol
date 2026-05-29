@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check protocol docs
+        run: |
+          test -s docs/API.md
+          test -s docs/PROTOCOL.md
+          test -s docs/DATABASE.md
